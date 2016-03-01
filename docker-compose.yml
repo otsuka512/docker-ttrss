@@ -1,0 +1,15 @@
+ttrssdb:
+  image: nornagon/postgres
+  ports:
+    - "5432:5432"
+  volumes:
+    - /srv/docker/ttrss/mnt:/mnt
+  mem_limit: 1G
+ttrss:
+  image: otsuka512/docker-ttrss
+  links:
+    - ttrssdb:db
+  ports:
+    - "8083:80"
+  mem_limit: 1G
+  restart: always
