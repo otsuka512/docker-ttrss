@@ -12,14 +12,12 @@ build:
 shell:
 	docker exec -i -t ttrss /bin/bash
 
-start:
-	sudo initctl start docker-$(CONTNAME)
-
 stop:
 	sudo initctl stop docker-$(CONTNAME)
+	docker-compose stop
 
 rm:
-	docker rm $(CONTNAME)
+	docker-compose rm
 
 run:
 	sudo docker-compose up -d
