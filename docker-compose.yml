@@ -1,10 +1,16 @@
 ttrssdb:
-  image: nornagon/postgres
+  image: sameersbn/postgresql:9.5-1
   ports:
     - "5432:5432"
   volumes:
-    - /srv/docker/ttrss/mnt:/mnt
+    - /srv/docker/ttrss/postgresql:/var/lib/postgresql
+  environment:
+    - DB_USER=ttrss
+    - DB_PASS=ttrss
+    - DB_NAME=ttrss
   mem_limit: 512M
+  restart: always
+
 ttrss:
   image: otsuka512/docker-ttrss
   links:
