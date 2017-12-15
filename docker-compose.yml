@@ -8,7 +8,6 @@ ttrssdb:
     - DB_USER=ttrss
     - DB_PASS=ttrss
     - DB_NAME=ttrss
-  mem_limit: 512M
   restart: always
 
 ttrss:
@@ -17,5 +16,4 @@ ttrss:
     - ttrssdb:db
   ports:
     - "8083:80"
-  mem_limit: 512M
   restart: always
